@@ -1,0 +1,84 @@
+#card {
+    width: 900px;
+    height: 130px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between; /* Ovdje promijenjeno */
+    align-items: center; /* Dodano */
+    transition: transform 0.3s;
+}
+
+#left {
+    /* margin-right: 30px; Remove this */
+    /* margin-left: -160px; Remove this */
+
+    flex-direction: column;
+    justify-content: left;
+}
+
+#right {
+    /* flex: 0 0 auto; Remove this */
+    /* margin-left: auto; Remove this */
+    margin-right: 20px; 
+    display: flex;
+    align-items: center; 
+}
+
+
+
+#nameEvent {
+    font-weight: bold;
+}
+
+#date {
+    margin-right: 145px;
+}
+
+#card:hover {
+    transform: scale(1.01);
+}
+
+#sheets{
+    margin-top: 79px;
+    background-color: darkgray;
+    max-width: 600px; 
+}
+
+#smece{
+    border-radius: 8px;
+}
+
+#main{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#textSide {
+    flex: 1;
+    margin-right: 30px;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#textSide p {
+    margin-bottom: 10px;
+}
+
+#mapSide {
+    flex: 0 0 auto;
+    margin-left: auto;
+    margin-right: 20px; 
+    display: flex;
+    align-items: center; 
+}
+
+#border{
+    max-width: 600px; 
+    border-bottom: 1px solid black;
+}

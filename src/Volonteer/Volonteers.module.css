@@ -1,0 +1,76 @@
+#window {
+    display: flex;
+    width: 90vw; 
+    overflow: hidden;
+    margin-top: 50px;
+}
+#filters {
+    flex: 30%; 
+    height: 500px;
+    background-color: whitesmoke;
+    border-radius: 7px;
+    justify-content: center;
+}
+
+#content {
+    flex: 70%; 
+}
+
+#select{
+    left: 80px;
+    top: 40px;
+    background-color: black;
+    color: black;
+    width: 50%;
+}
+
+#fieldset{
+    margin-top: 30px;
+    color: black;
+}
+
+#checkboxContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#checkboxContainer label{
+    margin: 0;
+}
+
+#addActivity{
+    position: fixed;
+    height: 50px;
+    top: 60%;
+    left: 14%;
+    border-radius: 80%;
+    padding: 16px;
+    cursor: default;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    background-color: green;
+    color: black;
+    cursor: pointer;
+}
+
+#addActivity:hover {
+    transform: scale(1.2); 
+    border: white;
+}
+
+
+.addButtonContainer {
+    display: flex; /* Set display to flex for flexbox layout */
+    align-items: center; /* Align items vertically center */
+ 
+}
+
+
+.text {
+    position: fixed;
+    top: 61%;
+    left: 18.6%;
+    font-size: 1.235em;
+    color: black; /* Set text color */
+}
