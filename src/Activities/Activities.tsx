@@ -11,14 +11,27 @@ import { AddActivity } from "./AddActivity";
 interface ActivitiesProps {
     cities: any, 
     admin: boolean,
-    orgs: any
+    orgs: any,
+    volonteers: any,
+    setVolonteers: any
 }
 
-const Activities = ({ cities, admin, orgs } : ActivitiesProps) => {
+const obradi = (objekt) => {
+    return {
+        "ime" : objekt.ime,
+        "prezime": objekt.prezime,
+        "slika": objekt.slika ?? null,
+        "email": objekt.email ?? null,
+        "datumPocetka": objekt.datumPocetka.toISOString(),
+        "grad": objekt.grad,
+        "aktivnost": objekt.aktivnosti
+    };
+};
+
+const Activities = ({ cities, admin, orgs, volonteers, setVolonteers } : ActivitiesProps) => {
     const [activities, setActivities] = useState([]);
     const [filteredActivities, setFilteredActivities] = useState([])
     const [open, setOpen] = useState(false);
-    const [organisation, setOrganisation] = useState("");
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false); 
@@ -44,10 +57,11 @@ const Activities = ({ cities, admin, orgs } : ActivitiesProps) => {
             if (organization) {
                 activity.udruga = organization.ime;
             } else {
-                activity.udruga = "Unknown";
+                activity.udruga = "Samostalno";
             }
             return activity;
         });
+        filtered.sort((a, b) => new Date(b.datum) - new Date(a.datum));
         setFilteredActivities(filtered);
     }
       
@@ -65,7 +79,7 @@ const Activities = ({ cities, admin, orgs } : ActivitiesProps) => {
             <br/><br/><br/>
             <div>
             {filteredActivities.map(ac => {
-               return (<Activity activity={ac} admin={admin} />)
+               return (<Activity activity={ac} admin={admin} volonteers={volonteers} setVolonteers={setVolonteers} />)
            })}
             </div>
             <button id={module.addActivity} onClick={handleOpen}>

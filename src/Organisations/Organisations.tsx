@@ -59,7 +59,7 @@ const Organisations = ({ organisations, cities, admin }: OrganisationsProps) => 
                  <h2>Zahtjevi za udruge</h2>
                 <Separator className="my-2" />
                 <div className="w-70vw mx-auto" id={module.main}>
-                    <ScrollList objectList={requestedOrganisations} />      
+                    <ScrollList objectList={requestedOrganisations} admin={admin} />      
                 </div>
                 </>
             )}

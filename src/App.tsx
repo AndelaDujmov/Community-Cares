@@ -33,7 +33,7 @@ function App() {
             <NavigationBar admin={isAdmin} setAdmin={setIsAdmin} />
             <Routes>
             <Route path="/" element={<MainPage />} />
-                <Route path="/activities" element={<Activities cities={cities} admin={isAdmin} orgs={organisations} />} />
+                <Route path="/activities" element={<Activities cities={cities} admin={isAdmin} orgs={organisations} volonteers={volonteers} setVolonteers={setVolonteers} />} />
                 <Route path="/volonteers" element={<Volonteers cities={cities} volonteers={volonteers} admin={isAdmin} />} />
                 <Route path="/organisations" element={<Organisations organisations={organisations} cities={cities} admin={isAdmin}/>} />
             </Routes>

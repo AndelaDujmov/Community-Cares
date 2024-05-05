@@ -6,3 +6,14 @@
 #element{
     height: 30px;
 }
+
+.reject{
+    background-color: red;
+    margin-right: 12px;
+    color: white;
+}
+
+.accept{
+    background-color: green;
+    color: white;
+}

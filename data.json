@@ -18,17 +18,9 @@
       "datum": "2024-08-12T14:11:43.511Z",
       "grad": "Split",
       "ulica": "Trondheimska 2",
-      "sudionici": []
-    },
-    {
-      "id": "activity3",
-      "ime": "Prikupljanje novaca za obitelj",
-      "opis": "Opis organizacije 3",
-      "udruga": "udruga1",
-      "datum": "2024-10-03T11:11:43.511Z",
-      "grad": "Zagreb",
-      "ulica": "Vukovarska 2",
-      "sudionici": []
+      "sudionici": [
+        "Ante Antic"
+      ]
     },
     {
       "id": "activity4",
@@ -59,6 +51,19 @@
       "grad": "Zagreb",
       "ulica": "Ilica 10",
       "sudionici": []
+    },
+    {
+      "id": "1db4",
+      "ime": "Prikupljanje novca za građenje krova",
+      "opis": "prikupljanje novca za građenje krova porušene kuće ",
+      "udruga": "60d9",
+      "datum": "2024-05-12T00:00:00.000Z",
+      "grad": "Zadar",
+      "ulica": "Vukovarska 2",
+      "sudionici": [
+        "Ivo Ivic",
+        "Jure Juric"
+      ]
     }
   ],
   "cities": [
@@ -81,13 +86,6 @@
   ],
   "organisations": [
     {
-      "id": "udruga1",
-      "ime": "Udruga 1",
-      "adresa": "Vukovarska 9",
-      "grad": "Split",
-      "odobreno": true
-    },
-    {
       "id": "udruga2",
       "ime": "Udruga 2",
       "adresa": "Vukovarska 11",
@@ -106,6 +104,13 @@
       "ime": "Udruga naša srca",
       "adresa": "Vjesnici 12",
       "grad": "Zagreb",
+      "odobreno": true
+    },
+    {
+      "id": "a1f5",
+      "ime": "Udruga Anđeli",
+      "adresa": "Vukovarska 3",
+      "grad": "Split",
       "odobreno": false
     }
   ],
@@ -189,6 +194,14 @@
         "Ekologija",
         "Edukacija"
       ]
+    },
+    {
+      "id": "f418",
+      "ime": "",
+      "prezime": "",
+      "slika": null,
+      "email": null,
+      "datumPocetka": "1970-01-01T00:00:00.000Z"
     }
   ]
 }

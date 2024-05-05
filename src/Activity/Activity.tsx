@@ -17,10 +17,12 @@ import { toast } from '@/components/ui/use-toast';
 
 interface ActivityProps {
     activity: any,
-    admin: boolean
+    admin: boolean,
+    volonteers: any,
+    setVolonteers: any
 }
 
-const Activity = ({ activity, admin }: ActivityProps) => {
+const Activity = ({ activity, admin, volonteers, setVolonteers }: ActivityProps) => {
     const [id] = useState(activity.id);
 
     const parseDate = (dateString) => {
@@ -42,6 +44,29 @@ const Activity = ({ activity, admin }: ActivityProps) => {
               })
         })
     }
+
+    const deleteSudionik = (indexToDelete) => {
+        const updatedSudionici = activity.sudionici
+                                         .slice(0, indexToDelete)
+                                         .concat(activity.sudionici.slice(indexToDelete + 1));
+        axios
+        .patch(`http://localhost:3001/activities/${activity.id}`, {
+            sudionici: updatedSudionici
+        })
+        .then(rez => {
+            toast({
+                title: "Volonter izbrisan!"
+            });
+        })
+        .catch(err => {
+            toast({
+                variant: "destructive",
+                title: "Nešto je pošlo po krivu",
+                description: "Naišli smo na problem s Vašim zahtjevom."
+            });
+        });                              
+           
+      };
 
     return (
         <div id={module.card}>
@@ -70,11 +95,30 @@ const Activity = ({ activity, admin }: ActivityProps) => {
                                 <p><b>Udruga:</b> {activity.udruga}</p>
                                 <p><b>Mjesto događanja:</b> {activity.grad}, {activity.ulica}</p>
                             </div>
-                            <div id={module.mapSide}><p>mapa</p></div>
+                            <div id={module.mapSide}><p></p></div>
                            </div>
-                           <div><InputForm /></div>
+                           <div><InputForm volonteers={volonteers} activity={activity} /></div>
                            <br />
                            <div id={module.border}></div>
+                           <div id={module.main}>
+                            <div id={module.textSide}>
+                                <br/><br/>
+                                <h2><b>Sudionici</b></h2>
+                                <ol>
+                                    {
+                                        activity.sudionici.map(
+                                            (sudionik, index) => (
+                                                <div id={module.oneLiner}>
+                                                    <li key={index}> {index + 1}. {sudionik}</li>&nbsp; &nbsp;
+                                                    {admin && (<button id={module.delete} onClick={() => deleteSudionik(index)}><FaTrash /></button>)}<br/><br/>
+                                                </div>
+                                            )
+                                        )
+                                    }
+                                </ol>
+                            </div>
+                            <div id={module.mapSide}><p></p></div>
+                           </div>
                           
                         </SheetDescription>
                         </SheetHeader>

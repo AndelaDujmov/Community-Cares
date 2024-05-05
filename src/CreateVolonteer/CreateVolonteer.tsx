@@ -52,14 +52,14 @@ const CreateVolonteer = ({ cities, filters } : CreateVolonteerProps) => {
         .post("http://localhost:3001/volonteers", dataToParse)
         .then(rez => {
             toast({
-                title: "Successfully added!"
+                title: "Volonter dodan!"
             });
         })
         .catch(err => {
             toast({
                 variant: "destructive",
-                title: "Uh oh! Something went wrong.",
-                description: "There was a problem with your request."
+                title: "Nešto je pošlo po krivu",
+                description: "Naišli smo na problem s Vašim zahtjevom."
             });
         });
     };
