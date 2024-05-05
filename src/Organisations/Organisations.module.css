@@ -1,0 +1,27 @@
+#main{
+    margin-top: 40px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+#separate{
+    margin-top: 100px;
+}
+
+#addActivity{
+    position: fixed;
+    top: 130px;
+    left: 50px;
+    height: 50px;
+    border-radius: 80%;
+    padding: 16px;
+    cursor: default;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    background-color: green;
+}
+
+#addActivity:hover {
+    transform: scale(1.2); 
+    border: white;
+}

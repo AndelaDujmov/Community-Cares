@@ -1,34 +1,20 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
 import module from './AddActivity.module.css'
 import axios from "axios"
+import { Formik } from 'formik';
 
-const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-})
+interface AddActivityProps {
+  cities: any,
+  orgs: any
+}
 
 const obradi = (objekt) => {
   return {
       "ime" : objekt.ime,
-      "ops": objekt.opis,
+      "opis": objekt.opis,
       "udruga": objekt.udruga ?? null,
       "datum": objekt.datum.toISOString(),
       "grad": objekt.grad,
@@ -37,7 +23,7 @@ const obradi = (objekt) => {
     }
 }
 
-export function AddActivity() {
+export function AddActivity({ cities, orgs }: AddActivityProps) {
   const [activity, setActivity] = useState({
     ime: "",
     opis: "",
@@ -48,33 +34,14 @@ export function AddActivity() {
     sudionici: [
     ]
   })
-  const [gradovi, setGradovi] = useState([]);
-  const [udruge, setUdruge] = useState([]);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    axios
-    .get("http://localhost:3001/cities")
-    .then(rez => setGradovi(rez.data));
-
+  
     axios
     .get("http://localhost:3001/organisations")
     .then(rez => setUdruge(rez.data))
   }, [])
-
-
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-        username: "",
-        date: new Date(),
-        city: "",
-        street: "",
-        isOrganization: "",
-        organization: "",
-        additionalInfo: "",
-    },
-  })
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -87,155 +54,109 @@ export function AddActivity() {
     setActivity({ ...activity, [name]: date });
   };
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+  function onSubmit(event) {
+    const dataToParse = obradi(activity)
+    axios
+    .post("http://localhost:3001/activities", dataToParse)
+    .then(rez => {
+      toast({
+        title: "Succesfully added!"
+  
+      })
     })
+    .catch(err => {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request."
+      })
+    })
+   
   }
 
-
   return (
-    
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-      <FormField
-          control={form.control}
-          name="ime"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Naziv aktivnosti"
-                  {...field}
-                  className={module.input}
-                  value={activity.ime}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+    <form onSubmit={onSubmit}>
+    <div>
+      <label>
+        Ime:
+        <input
+          type='text'
+          name='ime'
+          value={activity.ime}
+          onChange={handleInputChange}
+          required
         />
-         <FormField
-          control={form.control}
-          name="datum"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type="date"
-                  {...field}
-                  className={module.input}
-                  value={activity.datum.toISOString().slice(0, 10)}
-                  onChange={handleDateInputChange}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+      </label>
+    </div>
+    <div>
+      <label>
+        Opis:
+        <textarea
+          name='opis'
+          value={activity.opis}
+          onChange={handleInputChange}
+          required
+        ></textarea>
+      </label>
+    </div>
+    <div>
+        <label>
+          <input type="radio" onClick={() => setChecked(true)} checked={checked} /> Yes 
+        </label>&nbsp; &nbsp;
+        <label>
+          <input type="radio"  onClick={() => setChecked(false)} checked={!checked} /> No
+        </label>
+        </div>
+      {checked && (
+        <div>
+        <label>
+          Udruga:
+          <select name='udruga' value={activity.udruga} onChange={handleInputChange} required>
+            <option value=''>Udruga</option>
+            {orgs.map(org => (
+              <option key={org.id} value={org.id} className={module.input}>{org.ime}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+      )}
+    <div>
+      <label>
+        Datum:
+        <input
+          type='date'
+          name='datum'
+          value={activity.datum.toISOString().split('T')[0]}
+          onChange={handleDateInputChange}
+          required
         />
-        <FormField
-          control={form.control}
-          name="city"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-              <select {...field} className={module.input}>
-                <option value="">--Grad--</option>
-                {gradovi.map(grad => (
-                    <option key={grad.id}  value={activity.date}
-                    onChange={handleInputChange}>{grad.grad}</option>
-                ))}
-            </select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+      </label>
+    </div>
+    <div>
+      <label>
+        Grad:
+        <select name='grad' value={activity.grad} onChange={handleInputChange} required>
+          <option value=''>Select Grad</option>
+          {cities.map(grad => (
+            <option key={grad.id} value={grad.grad} className={module.input}>{grad.grad}</option>
+          ))}
+        </select>
+      </label>
+    </div>
+    <div>
+      <label>
+        Ulica:
+        <input
+          type='text'
+          name='ulica'
+          value={activity.ulica}
+          onChange={handleInputChange}
+          required
         />
-        <FormField
-          control={form.control}
-          name="ulica"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Ulica"
-                  {...field}
-                  className={module.input}
-                  value={activity.ulica}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-         <FormField
-          control={form.control}
-          name="isOrganisation"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-               <div>
-               <label>
-                  <input type="radio" onClick={() => setChecked(true)} {...field} /> Yes 
-                </label>&nbsp; &nbsp;
-                <label>
-                  <input type="radio"  onClick={() => setChecked(false)}{...field} /> No
-                </label>
-               </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        {checked && ( 
-          <FormField
-            control={form.control}
-            name="organization"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <select {...field} className={module.input}>
-                    <option value="">--Udruga--</option>
-                    {udruge.map(u => (
-                    <option key={u.id}  value={activity.udruga}
-                    onChange={handleInputChange}>{u.ime}</option>
-                    ))}
-                  </select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        )}
-       
-       <FormField
-          control={form.control}
-          name="opis"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Opis"
-                  {...field}
-                  className={module.input}
-                  value={activity.opis}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" onClick={onSubmit}>Kreiraj</Button>
-      </form>
-    </Form>
+      </label>
+    </div>
+    <button type='submit'>Kreiraj</button>
+  </form> 
   )
 }
+

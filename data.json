@@ -1,122 +1,194 @@
 {
-	"activities": [
-		{
-			"id": "activity1",
-			"ime": "Prikupljanje novaca za gradnju kuće",
-			"opis": "Opis organizacije",
-			"udruga": "udruga1",
-			"datum": "2024-09-21T12:15:43.511Z",
-			"grad": "Split",
-			"ulica": "Trondheimska 2",
-			"sudionici": [
-			]
-			
-		},
-			{
-			"id": "activity2",
-			"ime": "Prikupljanje novaca za bolesno dijete",
-			"opis": "Opis organizacije",
-			"udruga": "udruga1",
-			"datum": "2024-08-12T14:11:43.511Z",
-			"grad": "Split",
-			"ulica": "Trondheimska 2",
-			"sudionici": [
-			]
-			
-		},
-		{
-			"id": "activity3",
-			"ime": "Prikupljanje novaca za obitelj",
-			"opis": "Opis organizacije 3",
-			"udruga": "udruga1",
-			"datum": "2024-10-03T11:11:43.511Z",
-			"grad": "Zagreb",
-			"ulica": "Vukovarska 2",
-			"sudionici": [
-			]
-			
-		},
-		{
-			"id": "activity4",
-			"ime": "Kupnja kuhinje obitelji",
-			"opis": "Opis organizacije 4",
-			"udruga": "udruga1",
-			"datum": "2026-02-03T11:11:43.511Z",
-			"grad": "Osijek",
-			"ulica": "Račka 2",
-			"sudionici": [
-			]
-			
-		},
-		{
-			"id": "activity5",
-			"ime": "Prikupljanje hrane za obitelj",
-			"opis": "Opis organizacije 5",
-			"udruga": "udruga1",
-			"datum": "2024-10-12T14:11:43.511Z",
-			"grad": "Vukovar",
-			"ulica": "Marjanska 12",
-			"sudionici": [
-			]
-			
-		}
-	],
-	
-	"cities": [
-		{
-			"id": 1,
-			"grad": "Split"
-		},
-		{
-			"id": 2,
-			"grad": "Zagreb"
-		},
-		{
-			"id": 3,
-			"grad": "Zadar"
-		},
-		{
-			"id": 4,
-			"grad": "Sisak"
-		}
-		],
-		"organisations": [
-			{
-				"id": "udruga1",
-				"ime": "Udruga 1",
-				"adresa": "Vukovarska 9",
-				"grad": "Split"
-			},
-			{
-				"id": "udruga2",
-				"ime": "Udruga 2",
-				"adresa": "Vukovarska 11",
-				"grad": "Split"
-			},
-			{
-				"id": "udruga3",
-				"ime": "Udruga 3",
-				"adresa": "Osječka 12",
-				"grad": "Zagreb"
-			}
-			],
-		"filter": [
-			{
-				"id": 1,
-				"ime": "Ekologija"
-			},
-			{
-				"id": 2,
-				"ime": "Edukacija"
-			},
-			{
-				"id": 3,
-				"ime": "Prijevoz"
-			},
-			{
-				"id": 4,
-				"ime": "Razno"
-			}
-		]
-		
+  "activities": [
+    {
+      "id": "activity1",
+      "ime": "Prikupljanje novaca za gradnju kuće",
+      "opis": "Opis organizacije",
+      "udruga": "udruga1",
+      "datum": "2024-09-21T12:15:43.511Z",
+      "grad": "Split",
+      "ulica": "Trondheimska 2",
+      "sudionici": []
+    },
+    {
+      "id": "activity2",
+      "ime": "Prikupljanje novaca za bolesno dijete",
+      "opis": "Opis organizacije",
+      "udruga": "udruga1",
+      "datum": "2024-08-12T14:11:43.511Z",
+      "grad": "Split",
+      "ulica": "Trondheimska 2",
+      "sudionici": []
+    },
+    {
+      "id": "activity3",
+      "ime": "Prikupljanje novaca za obitelj",
+      "opis": "Opis organizacije 3",
+      "udruga": "udruga1",
+      "datum": "2024-10-03T11:11:43.511Z",
+      "grad": "Zagreb",
+      "ulica": "Vukovarska 2",
+      "sudionici": []
+    },
+    {
+      "id": "activity4",
+      "ime": "Kupnja kuhinje obitelji",
+      "opis": "Opis organizacije 4",
+      "udruga": "udruga1",
+      "datum": "2026-02-03T11:11:43.511Z",
+      "grad": "Osijek",
+      "ulica": "Račka 2",
+      "sudionici": []
+    },
+    {
+      "id": "activity5",
+      "ime": "Prikupljanje hrane za obitelj",
+      "opis": "Opis organizacije 5",
+      "udruga": "udruga1",
+      "datum": "2024-10-12T14:11:43.511Z",
+      "grad": "Vukovar",
+      "ulica": "Marjanska 12",
+      "sudionici": []
+    },
+    {
+      "id": "5ee5",
+      "ime": "Donacije za potres",
+      "opis": "prikupljanje donacija za potrebite zahvaćene potresom",
+      "udruga": "udruga2",
+      "datum": "2024-05-12T00:00:00.000Z",
+      "grad": "Zagreb",
+      "ulica": "Ilica 10",
+      "sudionici": []
+    }
+  ],
+  "cities": [
+    {
+      "id": "1",
+      "grad": "Split"
+    },
+    {
+      "id": "2",
+      "grad": "Zagreb"
+    },
+    {
+      "id": "3",
+      "grad": "Zadar"
+    },
+    {
+      "id": "4",
+      "grad": "Sisak"
+    }
+  ],
+  "organisations": [
+    {
+      "id": "udruga1",
+      "ime": "Udruga 1",
+      "adresa": "Vukovarska 9",
+      "grad": "Split",
+      "odobreno": true
+    },
+    {
+      "id": "udruga2",
+      "ime": "Udruga 2",
+      "adresa": "Vukovarska 11",
+      "grad": "Split",
+      "odobreno": true
+    },
+    {
+      "id": "udruga3",
+      "ime": "Udruga 3",
+      "adresa": "Osječka 12",
+      "grad": "Zagreb",
+      "odobreno": true
+    },
+    {
+      "id": "60d9",
+      "ime": "Udruga naša srca",
+      "adresa": "Vjesnici 12",
+      "grad": "Zagreb",
+      "odobreno": false
+    }
+  ],
+  "filter": [
+    {
+      "id": "1",
+      "ime": "Ekologija"
+    },
+    {
+      "id": "2",
+      "ime": "Edukacija"
+    },
+    {
+      "id": "3",
+      "ime": "Prijevoz"
+    },
+    {
+      "id": "4",
+      "ime": "Razno"
+    }
+  ],
+  "volonteers": [
+    {
+      "id": "v1",
+      "ime": "Ante",
+      "prezime": "Antic",
+      "slika": "",
+      "email": "ante.antic@gmail.com",
+      "datumPocetka": "2023-12-21T12:15:43.511Z",
+      "grad": "Split",
+      "aktivnost": [
+        "Ekologija"
+      ]
+    },
+    {
+      "id": "v2",
+      "ime": "Jure",
+      "prezime": "Juric",
+      "slika": "",
+      "email": "jure.juric@gmail.com",
+      "datumPocetka": "2024-01-01T12:15:43.511Z",
+      "grad": "Zagreb",
+      "aktivnost": [
+        "Ekologija",
+        "Edukacija"
+      ]
+    },
+    {
+      "id": "v3",
+      "ime": "Ivo",
+      "prezime": "Ivic",
+      "slika": "",
+      "email": "ivo.ivic@gmail.com",
+      "datumPocetka": "2024-12-21T12:15:43.511Z",
+      "grad": "Split",
+      "aktivnost": [
+        "Edukacija"
+      ]
+    },
+    {
+      "id": "27ea",
+      "ime": "jena",
+      "prezime": "Jelic",
+      "slika": "",
+      "email": "",
+      "datumPocetka": "2024-05-05T08:59:43.423Z",
+      "grad": "Split",
+      "aktivnost": [
+        "Ekologija"
+      ]
+    },
+    {
+      "id": "cb5e",
+      "ime": "Maja",
+      "prezime": "Jelković",
+      "slika": "",
+      "email": "majaj@gmail.com",
+      "datumPocetka": "2024-05-05T09:04:11.129Z",
+      "grad": "Sisak",
+      "aktivnost": [
+        "Ekologija",
+        "Edukacija"
+      ]
+    }
+  ]
 }

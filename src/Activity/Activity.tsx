@@ -10,15 +10,18 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 "use client"
-import { z } from "zod"
 import { InputForm } from '@/Volonteer/InputForm';
-import AddActivity from '@/Activities/AddActivity';
+import { useState } from 'react';
+import axios from 'axios';
+import { toast } from '@/components/ui/use-toast';
 
 interface ActivityProps {
-    activity: any
+    activity: any,
+    admin: boolean
 }
 
-const Activity = ({ activity }: ActivityProps) => {
+const Activity = ({ activity, admin }: ActivityProps) => {
+    const [id] = useState(activity.id);
 
     const parseDate = (dateString) => {
         const date = new Date(dateString);
@@ -26,10 +29,18 @@ const Activity = ({ activity }: ActivityProps) => {
         const month = ('0' + (date.getMonth() + 1)).slice(-2);
         const day = ('0' + date.getDate()).slice(-2); 
         const year = date.getFullYear();
-        const hours = ('0' + date.getHours()).slice(-2); 
-        const minutes = ('0' + date.getMinutes()).slice(-2);
 
-        return `${month}.${day}.${year} ${hours}:${minutes}`;
+        return `${month}.${day}.${year}`;
+    }
+
+    const handleDelete = () => {
+        axios
+        .delete(`http://localhost:3001/activities/${id}`)
+        .then(rez => {
+            toast({
+                title: "Succesfully deleted!"
+              })
+        })
     }
 
     return (
@@ -71,7 +82,7 @@ const Activity = ({ activity }: ActivityProps) => {
                 </Sheet>
                 &nbsp;&nbsp;
                 
-                <Button id={module.smece} variant="destructive"><FaTrash /></Button>
+                {admin && (<Button id={module.smece} onClick={handleDelete} variant="destructive"><FaTrash /></Button>)}
             </div>
            
         </div>

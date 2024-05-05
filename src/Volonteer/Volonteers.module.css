@@ -6,7 +6,7 @@
 }
 #filters {
     flex: 30%; 
-    height: 500px;
+    height: 550px;
     background-color: whitesmoke;
     border-radius: 7px;
     justify-content: center;
@@ -14,6 +14,10 @@
 
 #content {
     flex: 70%; 
+    height: 550px;
+    margin-left: 42px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #select{
@@ -57,7 +61,7 @@
 #addActivity:hover {
     transform: scale(1.2); 
     border: white;
-}
+} 
 
 
 .addButtonContainer {

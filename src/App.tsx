@@ -9,23 +9,33 @@ import Volonteers from './Volonteer/Volonteers';
 import axios from 'axios';
 
 function App() {
-  const [gradovi, setGradovi] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [organisations, setOrganisations] = useState([]);
+  const [volonteers, setVolonteers] = useState([]);
 
   useEffect(() => {
-    axios
-    .get("http://localhost:3001/cities")
-    .then(rez => setGradovi(rez.data));
-  });
+    Promise.all([
+      axios.get("http://localhost:3001/cities"),
+      axios.get("http://localhost:3001/organisations"),
+      axios.get("http://localhost:3001/volonteers")
+    ])
+    .then(([rezCities, rezOrganisations, rezVolonteers]) => {
+        setCities(rezCities.data);
+        setOrganisations(rezOrganisations.data);
+        setVolonteers(rezVolonteers.data);
+    });
+  }, [organisations, volonteers]);
 
   return (
     <>
      <Router>
-            <NavigationBar />
+            <NavigationBar admin={isAdmin} setAdmin={setIsAdmin} />
             <Routes>
             <Route path="/" element={<MainPage />} />
-                <Route path="/activities" element={<Activities/>} />
-                <Route path="/volonteers" element={<Volonteers gradovi={gradovi}/>} />
-                <Route path="/organisations" element={<Organisations/>} />
+                <Route path="/activities" element={<Activities cities={cities} admin={isAdmin} orgs={organisations} />} />
+                <Route path="/volonteers" element={<Volonteers cities={cities} volonteers={volonteers} admin={isAdmin} />} />
+                <Route path="/organisations" element={<Organisations organisations={organisations} cities={cities} admin={isAdmin}/>} />
             </Routes>
         </Router>
     

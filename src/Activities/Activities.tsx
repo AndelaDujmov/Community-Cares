@@ -8,11 +8,20 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { AddActivity } from "./AddActivity";
 
-const Activities = () => {
+interface ActivitiesProps {
+    cities: any, 
+    admin: boolean,
+    orgs: any
+}
+
+const Activities = ({ cities, admin, orgs } : ActivitiesProps) => {
     const [activities, setActivities] = useState([]);
+    const [filteredActivities, setFilteredActivities] = useState([])
     const [open, setOpen] = useState(false);
+    const [organisation, setOrganisation] = useState("");
+
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => setOpen(false); 
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -28,11 +37,26 @@ const Activities = () => {
         maxHeight: '80vh', 
         overflowY: 'auto'
       };
+
+    const filterActivities = (activities) => {
+        const filtered = activities.map(activity => {
+            const organization = orgs.find(org => org.id === activity.udruga);
+            if (organization) {
+                activity.udruga = organization.ime;
+            } else {
+                activity.udruga = "Unknown";
+            }
+            return activity;
+        });
+        setFilteredActivities(filtered);
+    }
       
     useEffect(() => {
         axios
         .get("http://localhost:3001/activities")
         .then(res => setActivities(res.data))
+
+        filterActivities(activities);
         
     }, [activities])
 
@@ -40,9 +64,8 @@ const Activities = () => {
         <>
             <br/><br/><br/>
             <div>
-            {activities.map(ac => {
-               
-               return (<Activity activity={ac}/>)
+            {filteredActivities.map(ac => {
+               return (<Activity activity={ac} admin={admin} />)
            })}
             </div>
             <button id={module.addActivity} onClick={handleOpen}>
@@ -56,7 +79,7 @@ const Activities = () => {
             >
                 <Box sx={style}>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                   <AddActivity />
+                   <AddActivity cities={cities} orgs={orgs} />
                 </Typography>
                 </Box>
             </Modal>
