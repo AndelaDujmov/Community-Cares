@@ -40,7 +40,9 @@
       "datum": "2024-10-12T14:11:43.511Z",
       "grad": "Vukovar",
       "ulica": "Marjanska 12",
-      "sudionici": []
+      "sudionici": [
+        "Ante Antic"
+      ]
     },
     {
       "id": "5ee5",
@@ -64,6 +66,16 @@
         "Ivo Ivic",
         "Jure Juric"
       ]
+    },
+    {
+      "id": "29b6",
+      "ime": "Gradnja obiteljske kuće ",
+      "opis": "Gradnja obiteljske kuće u Petrinji",
+      "udruga": "60d9",
+      "datum": "2024-06-12T00:00:00.000Z",
+      "grad": "Zagreb",
+      "ulica": "Ilica 2",
+      "sudionici": []
     }
   ],
   "cities": [
@@ -111,6 +123,20 @@
       "ime": "Udruga Anđeli",
       "adresa": "Vukovarska 3",
       "grad": "Split",
+      "odobreno": false
+    },
+    {
+      "id": "1680",
+      "ime": "Udruga Grada Splita",
+      "adresa": "Vanjski Trg 3",
+      "grad": "Zagreb",
+      "odobreno": false
+    },
+    {
+      "id": "1431",
+      "ime": "DICA SRETNIH LICA",
+      "adresa": "Vlaška 3",
+      "grad": "Zagreb",
       "odobreno": false
     }
   ],
@@ -161,7 +187,7 @@
     {
       "id": "v3",
       "ime": "Ivo",
-      "prezime": "Ivic",
+      "prezime": "Ivica",
       "slika": "",
       "email": "ivo.ivic@gmail.com",
       "datumPocetka": "2024-12-21T12:15:43.511Z",
@@ -171,21 +197,9 @@
       ]
     },
     {
-      "id": "27ea",
-      "ime": "jena",
-      "prezime": "Jelic",
-      "slika": "",
-      "email": "",
-      "datumPocetka": "2024-05-05T08:59:43.423Z",
-      "grad": "Split",
-      "aktivnost": [
-        "Ekologija"
-      ]
-    },
-    {
       "id": "cb5e",
       "ime": "Maja",
-      "prezime": "Jelković",
+      "prezime": "Jelkovic",
       "slika": "",
       "email": "majaj@gmail.com",
       "datumPocetka": "2024-05-05T09:04:11.129Z",
@@ -194,14 +208,6 @@
         "Ekologija",
         "Edukacija"
       ]
-    },
-    {
-      "id": "f418",
-      "ime": "",
-      "prezime": "",
-      "slika": null,
-      "email": null,
-      "datumPocetka": "1970-01-01T00:00:00.000Z"
     }
   ]
 }

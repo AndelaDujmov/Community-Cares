@@ -75,7 +75,7 @@ export function AddActivity({ cities, orgs }: AddActivityProps) {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={module.formContainer}>
     <div>
       <label>
         Ime:

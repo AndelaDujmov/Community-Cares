@@ -65,7 +65,6 @@ const Activity = ({ activity, admin, volonteers, setVolonteers }: ActivityProps)
                 description: "Naišli smo na problem s Vašim zahtjevom."
             });
         });                              
-           
       };
 
     return (

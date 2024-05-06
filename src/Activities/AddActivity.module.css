@@ -1,3 +1,64 @@
 .input{
     color:black
 }
+
+.formContainer {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formContainer label {
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .formContainer input[type='text'],
+  .formContainer input[type='date'],
+  .formContainer select,
+  .formContainer textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .formContainer input[type='text']:focus,
+  .formContainer input[type='date']:focus,
+  .formContainer select:focus,
+  .formContainer textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+  
+  .formContainer input[type='radio'] {
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .formContainer button[type='submit'] {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .formContainer button[type='submit']:hover {
+    background-color: #45a049;
+  }
+  
+  .error-message {
+    color: #ff6666;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  

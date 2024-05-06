@@ -36,7 +36,7 @@ const Create = ({ cities } : CreateProps) => {
         .post("http://localhost:3001/organisations", dataToParse)
         .then(rez => {
             toast({
-                title: "Successfully added!"
+                title: "Zahtjev je poslan administratoru za odobrenje!"
             });
         })
         .catch(err => {
@@ -50,7 +50,7 @@ const Create = ({ cities } : CreateProps) => {
 
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className={module.formContainer}>
             <div>
                 <input
                     type='text'

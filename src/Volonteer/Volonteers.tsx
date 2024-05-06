@@ -8,6 +8,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import VolonteerFrame from '@/VolonteerFrame/VolonteerFrame'
 import CreateVolonteer from '@/CreateVolonteer/CreateVolonteer'
+import { toast } from '@/components/ui/use-toast'
 
 interface VolonteersProps {
     cities: any,
@@ -21,8 +22,7 @@ const Volonteers = ({ cities, volonteers, admin }: VolonteersProps) =>{
     const [selectedCity, setSelectedCity] = useState();
     const [selectedOptions, setSelectedOptions] = useState([])
     const [filteredVolonteers, setFilteredVolonteers] = useState(volonteers);
-    const [open, setOpen] = useState(false);
-   
+    const [open, setOpen] = useState(false); 
 
     const handleOpen = () => setOpen(!open);
 
@@ -41,16 +41,30 @@ const Volonteers = ({ cities, volonteers, admin }: VolonteersProps) =>{
         overflowY: 'auto'
       };
 
-    const options = cities.map(city => ({value: city.grad, label: city.grad}))
+      const options = [
+        { value: 'all', label: 'Svi' },
+        ...cities.map(city => ({ value: city.grad, label: city.grad }))
+    ];
 
     const filterVolonteers = (event) => {
-        setSelectedCity(event.value);
+        const { value } = event;
+    if (value === 'all') {
+        // If "All" is selected, set selectedOptions to include all option values except 'all'
+        const allOptionValues = options.filter(option => option.value !== 'all').map(option => option.value);
+        setSelectedOptions(allOptionValues);
+        setSelectedCity(null); // Clear selected city
+    } else {
+        // Otherwise, set selectedCity as usual
+        setSelectedCity(value);
+        setSelectedOptions([]); // Clear selected options
+    }
     }
 
     const handleCheckboxChange = (event) => {
         const { value, checked } = event.target;
         if (checked) {
             setSelectedOptions([...selectedOptions, value]); 
+            console.log(selectedOptions)
         } else {
             setSelectedOptions(selectedOptions.filter(option => option !== value)); 
         }
@@ -64,11 +78,12 @@ const Volonteers = ({ cities, volonteers, admin }: VolonteersProps) =>{
 
         const filtered = volonteers.filter(volonteer => {
             const cityMatches = !selectedCity || volonteer.grad === selectedCity;
-            const selectedCheckboxes = selectedOptions.every(option => volonteer.aktivnost.includes(option));
+            const selectedCheckboxes = selectedOptions.every(option => 
+                volonteer.aktivnost && volonteer.aktivnost.includes(option)
+            );
             return cityMatches && selectedCheckboxes;
-        });
-
-        console.log(filtered)
+        }); 
+        
         
         setFilteredVolonteers(filtered);
         
@@ -79,7 +94,9 @@ const Volonteers = ({ cities, volonteers, admin }: VolonteersProps) =>{
     <div id={module.window}>
         <div id={module.filters}>
             <div>
-            <Select options={options} id={module.select} placeholder={"Grad"} value={options.find(option => option.value === selectedCity)} onChange={filterVolonteers} />  <br/>  <br/>   
+            <Select options={options} id={module.select} placeholder={"Grad"} value={options.find(option => option.value === selectedCity)} onChange={filterVolonteers} >
+
+            </Select>  <br/>  <br/>   
             </div>
             <div id={module.fieldset}>
             
@@ -131,7 +148,7 @@ const Volonteers = ({ cities, volonteers, admin }: VolonteersProps) =>{
         <div id={module.content}>
             {filteredVolonteers.map(
                 volonteer => (
-                    <VolonteerFrame volonteer={volonteer} admin={admin} />
+                    <VolonteerFrame volonteer={volonteer} admin={admin} cities={cities} />
                 )
             )}
         </div>

@@ -1,6 +1,7 @@
 import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import axios from "axios";
+import module from './InputForm.module.css'
 
 interface InputFormProps {
   volonteers: any,
@@ -53,17 +54,20 @@ export function InputForm({ volonteers, activity }: InputFormProps) {
 
 
   return (
-    <form onSubmit={onSubmit}>
-    <div>
+    <form onSubmit={onSubmit} className={module.form}>
+    <div className={module.formGroup}>
         <input
             type='text'
             name='ime'
             placeholder='Ime'
             value={inputV.ime}
             onChange={handleInputChange}
+            className={module.input}
             required
         />
+      
     </div>
+  
     <div>
         <input
             type='text'
@@ -71,10 +75,11 @@ export function InputForm({ volonteers, activity }: InputFormProps) {
             placeholder='Prezime'
             value={inputV.prezime}
             onChange={handleInputChange}
+            className={module.input}
             required
         />
     </div>
-    <button type='submit'>Prijava</button>
+    <button type='submit' className={module.button}>Prijava</button>
 </form>
   );
 }

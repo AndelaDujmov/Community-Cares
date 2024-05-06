@@ -67,4 +67,32 @@
   .editButton{
     border-radius: 4px;
     cursor: pointer;
+    margin-right: 19px;
   }
+
+  .deleteButton{
+    cursor: pointer;
+    background-color: red;
+  }
+
+  .inputField {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.submitButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: #45a049;
+}

@@ -6,27 +6,10 @@
     margin-top: 20px;
     margin-bottom: 15px;
     display: flex;
-    justify-content: space-between; /* Ovdje promijenjeno */
-    align-items: center; /* Dodano */
+    justify-content: space-between; 
+    align-items: center; 
     transition: transform 0.3s;
 }
-
-#left {
-    /* margin-right: 30px; Remove this */
-    /* margin-left: -160px; Remove this */
-
-    flex-direction: column;
-    justify-content: left;
-}
-
-#right {
-    /* flex: 0 0 auto; Remove this */
-    /* margin-left: auto; Remove this */
-    margin-right: 20px; 
-    display: flex;
-    align-items: center; 
-}
-
 
 
 #nameEvent {
@@ -34,7 +17,8 @@
 }
 
 #date {
-    margin-right: 145px;
+    position: absolute;
+    margin-right: 15px;
 }
 
 #card:hover {

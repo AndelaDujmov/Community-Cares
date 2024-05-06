@@ -16,18 +16,6 @@ interface ActivitiesProps {
     setVolonteers: any
 }
 
-const obradi = (objekt) => {
-    return {
-        "ime" : objekt.ime,
-        "prezime": objekt.prezime,
-        "slika": objekt.slika ?? null,
-        "email": objekt.email ?? null,
-        "datumPocetka": objekt.datumPocetka.toISOString(),
-        "grad": objekt.grad,
-        "aktivnost": objekt.aktivnosti
-    };
-};
-
 const Activities = ({ cities, admin, orgs, volonteers, setVolonteers } : ActivitiesProps) => {
     const [activities, setActivities] = useState([]);
     const [filteredActivities, setFilteredActivities] = useState([])
